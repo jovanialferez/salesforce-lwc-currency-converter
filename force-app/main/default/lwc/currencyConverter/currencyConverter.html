@@ -1,0 +1,49 @@
+<template>
+    <div class="app slds-p-around_x-large">
+        <h1 class="slds-text-heading_large">Currency Converter</h1>
+        <form>
+            <fieldset class="slds-form-element slds-form-element_compound">
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-3">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="txt-amount">Amount</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="txt-amount" class="slds-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-3">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="sel-base-currency">From</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="sel-base-currency">
+                                            <option value="eur">EUR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-3">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="sel-target-currency">To</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="sel-target-currency">
+                                            <option value=""></option>
+                                            <template for:each={rates} for:item="rate">
+                                                <option key={rate.key} value={rate.key}>{rate.key}</option>
+                                            </template>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <button class="slds-button slds-button_success">Convert</button>
+        </form>
+    </div>
+</template>
