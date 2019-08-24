@@ -1,0 +1,16 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "An awesome LWC currency converter using fixer.io api",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "lwc-jest",
+    "test:unit:watch": "lwc-jest --watch",
+    "test:unit:debug": "lwc-jest --debug"
+  },
+  "author": "jovani",
+  "license": "ISC",
+  "devDependencies": {
+    "@salesforce/lwc-jest": "^0.5.4"
+  }
+}

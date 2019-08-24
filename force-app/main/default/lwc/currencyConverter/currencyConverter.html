@@ -1,7 +1,7 @@
 <template>
     <div class="app slds-p-around_x-large">
         <h1 class="slds-text-heading_large">Currency Converter</h1>
-        <form>
+        <form onsubmit={handleOnFormSubmit}>
             <fieldset class="slds-form-element slds-form-element_compound">
                 <div class="slds-form-element__control">
                     <div class="slds-form-element__row">
@@ -9,7 +9,7 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="txt-amount">Amount</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" id="txt-amount" class="slds-input" />
+                                    <input type="text" id="txt-amount" class="slds-input" name="amount" value={amount} onchange={handleOnInputChange} />
                                 </div>
                             </div>
                         </div>
@@ -18,8 +18,8 @@
                                 <label class="slds-form-element__label" for="sel-base-currency">From</label>
                                 <div class="slds-form-element__control">
                                     <div class="slds-select_container">
-                                        <select class="slds-select" id="sel-base-currency">
-                                            <option value="eur">EUR</option>
+                                        <select class="slds-select" id="sel-base-currency" name="baseCurrency" onchange={handleOnBaseCurrencyChange}>
+                                            <option value="EUR">EUR</option>
                                         </select>
                                     </div>
                                 </div>
@@ -30,10 +30,9 @@
                                 <label class="slds-form-element__label" for="sel-target-currency">To</label>
                                 <div class="slds-form-element__control">
                                     <div class="slds-select_container">
-                                        <select class="slds-select" id="sel-target-currency">
-                                            <option value=""></option>
-                                            <template for:each={rates} for:item="rate">
-                                                <option key={rate.key} value={rate.key}>{rate.key}</option>
+                                        <select class="slds-select" id="sel-target-currency" name="targetCurrency" onchange={handleOnInputChange}>
+                                            <template if:true={rates} for:each={rates} for:item="rate">
+                                                <option key={rate.currency} value={rate.currency} selected={rate.selected}>{rate.currency}</option>
                                             </template>
                                         </select>
                                     </div>
@@ -43,7 +42,10 @@
                     </div>
                 </div>
             </fieldset>
-            <button class="slds-button slds-button_success">Convert</button>
+            <button class="slds-button slds-button_success" type="submit">Convert</button>
         </form>
+        <div if:true={convertedValue} class="conversion-result slds-text-heading_large slds-m-top_large">
+            <h1>{amount} {baseCurrency} = <strong>{convertedValue}</strong> {targetCurrency}</h1>
+        </div>
     </div>
 </template>
