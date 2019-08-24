@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>FIXER_ACCESS_KEY</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Fixer Access Key</shortDescription>
+        <value>ca39da97f144ca230d289441409d95d7</value>
+    </labels>
+</CustomLabels>
